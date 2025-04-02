@@ -1,0 +1,25 @@
+
+.player-link {
+    color: #2E7D32;
+    text-decoration: none;
+    display: block;
+}
+
+.player-link:hover {
+    text-decoration: underline;
+}
+
+.more-sessions {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.more-sessions a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.more-sessions a:hover {
+    text-decoration: underline;
+}
