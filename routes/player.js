@@ -35,6 +35,24 @@ router.get('/on', (req, res) => {
   });
 });
 
+
+// Log off all active players
+router.get('/all-off', (req, res) => {
+  db.run(
+    'UPDATE sessions SET logout_time = CURRENT_TIMESTAMP WHERE logout_time IS NULL',
+    function(err) {
+      if (err) {
+        return res.status(500).json({ error: 'Failed to log off players' });
+      }
+      res.json({ 
+        success: true, 
+        message: 'All players logged off', 
+        playersLoggedOff: this.changes 
+      });
+    }
+  );
+});
+
 // Helper function to create a session
 function createSession(playerId, res) {
   db.run('INSERT INTO sessions (player_id) VALUES (?)', [playerId], function(err) {
